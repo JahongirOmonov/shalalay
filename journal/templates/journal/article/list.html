@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+{% blocktrans %}Maqolalar{% endblocktrans %}
+{% endblock title %}
+
+
+{% block content %}
+<div class="container mb-4">
+    <div class="row mb-4">
+        <div class="col-xm col-sm-8">
+            <p class="text-center fs-2 fw-medium mt-3" style="font-family: Times New Roman; color:#3b3b1f" >{% blocktrans %}Maqolalar{% endblocktrans %}</p>
+            {% for article in articles %}
+            <div class="card mb-3 shadow-lg">
+                <div class="card-body ">
+                    <h5 class="card-title text-center">{{ article.title }}</h5>
+                    <p class="card-text">{{ article.content|safe|truncatewords:35|linebreaks}}</p>
+                    <div>
+                        <a href="{{ article.get_absolute_url }}" class="btn btn-outline-info">{% blocktrans %}batafsil...{% endblocktrans %}</a>
+                    </div>
+                </div>
+                <div class="card-footer text-body-secondary">
+                    {{ article.created_at|timesince }}
+                </div>
+            </div>
+            {% empty %}
+            <div class="card mb-3 shadow-lg">
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0 mt-3">
+                        <footer  class="blockquote-footer" style="font-family: Times New Roman; color:#3b3b1f">{% blocktrans %}Bu yerda hali maqolalar mavjud emas.{% endblocktrans %}
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-4">
+        </div>
+    </div>
+    {% include 'journal/includes/pagination.html' with page=articles %}
+</div>
+{% endblock content %}
+
+
+

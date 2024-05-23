@@ -1,0 +1,69 @@
+.font-ink-free {
+    font-family: ink-free;
+}
+
+
+.font-nsim-sun {
+    font-family: NSimSun;
+}
+
+.font-monotype-corsiva {
+    font-family: Monotype Corsiva;
+}
+
+.font-consolas {
+    font-family: Consolas;
+}
+
+.bg-image {
+    height: 25rem;
+    /*width: 20rem;*/
+    background-size: cover;
+    /*background-image: linear-gradient(lightgreen, lightgreen, lime, lime, white);*/
+    background-image: url("../images/bgimage1.png");
+}
+
+.hover-uzb:hover{
+    background-image: linear-gradient(blue, blue, blue, blue, blue, darkred, white, white, white, white, darkred, green, green, green, green);
+}
+
+.hover-lime-green:hover{
+
+    background-image: linear-gradient(limegreen, lime, green, lime, limegreen);
+}
+
+
+.hover-fire:hover{
+    background-image: linear-gradient(black, red, yellow);
+}
+
+.hover-link:hover {
+    background-color: greenyellow;
+}
+
+
+.span-hover:hover .span-color:hover {
+    color: lime;
+}
+
+.span-color-always{
+    color: lightskyblue;
+    font-weight: bold;
+    font-size: large;
+}
+
+.lime-color{
+    color: lime;
+}
+
+.lime-color-hover:hover{
+    color: lime;
+}
+
+
+.bg-lime
+{
+    background-color: lime;
+}
+
+

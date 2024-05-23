@@ -1,0 +1,41 @@
+{% extends 'users/_profile.html' %}
+{% load i18n %}
+{% block title %}
+{{ social.title }} - {% blocktrans %}tahrirlash{% endblocktrans %}
+{% endblock title %}
+
+
+{% block content %}
+<div class="mt-4 pt-4"></div>
+<div class="container shadow-lg rounded-4 mt-4 pt-4">
+    <h1 class="font-consolas mt-2 mx-4 text-center">
+        <p class="text-end text-xxl-center fs-1 me-2">
+            <span>"{{ social.title }}"{% blocktrans %}ni tahrirlash{% endblocktrans %}</span>
+            <a href="{% url 'users:profile' %}" class="text-danger">
+                <i class="fa-solid fa-rectangle-xmark">
+
+                </i>
+            </a>
+        </p>
+    </h1>
+
+    <div class="col mt-4 mx-4">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-outline-success  mb-4">
+                    {% blocktrans %}Tahrirlash{% endblocktrans %}
+                </button>
+                <a href="{% url 'journal:social_media_list' %}" class="btn btn-outline-dark  mb-4">
+                    {% blocktrans %}Ortga{% endblocktrans %}
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+
+
+

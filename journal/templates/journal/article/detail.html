@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+{% blocktrans with title=article.title %}{{ title }} haqida {% endblocktrans %}
+{% endblock title %}
+
+
+{% block content %}
+<div class="container my-4">
+    <div class="row mb-4">
+        <div class="col-xm col-sm-9">
+            <div class="card mb-3 shadow-lg">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{% blocktrans with title=article.title %}{{ title }}{% endblocktrans %}</h5>
+                    <hr class="my-2">
+                    <p class="card-text">{% blocktrans with content=article.content|safe|linebreaks %}{{ content }}{% endblocktrans %}</p>
+                </div>
+                <p class="fw-bold m-4"><span
+                        class="font-consolas" style="color: #555555">
+                    {% blocktrans %}Ko'rishlar soni: {% endblocktrans %}{{ article.views }}
+                </span></p>
+                <p class="fw-bold mx-4"><span
+                        class="font-consolas" style="color: #555555">
+                    {% blocktrans %}Mualliflar:{% endblocktrans %}
+                    {{ article.authors }}
+                </span></p>
+                <div class="card-footer text-body-secondary my-2 glyphicon-text-width">
+
+
+                    <div class="col">
+                        {{ article.created_at|timesince }}
+                    </div>
+
+                    {% if request.user.is_superuser %}
+                    <div class="col">
+                        <a class="btn btn-outline-warning mt-2"
+                           href="{{ article.get_update_url }}">{% blocktrans %}Tahrirlash{% endblocktrans %}</a>
+                    </div>
+                    <div class="col">
+                        <a class="btn btn-outline-danger mt-2"
+                           href="{{ article.get_delete_url }}">{% blocktrans %}O'chirish{% endblocktrans %}</a>
+                    </div>
+                    {% endif %}
+                    <div class="col">
+                        <a class="btn btn-outline-info mt-2"
+                           href="{% url 'journal:article_list' %}">{% blocktrans %}Barcha yangiliklar{% endblocktrans %}</a>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-3">
+
+    </div>
+</div>
+</div>
+{% endblock content %}
+
+
+

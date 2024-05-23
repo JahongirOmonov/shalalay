@@ -1,0 +1,47 @@
+{% load static %}
+{% load journal_tags %}
+{% load i18n %}
+<div class="" style="height: 10rem;"></div>
+<div class="container mb-4">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center flex-row">
+            <div class="p-2">
+                <a class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                    <i class="fa-brands fa-python fs-2" style="color: #00FF7F;"></i>
+                </a>
+                <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Company, Inc</span>
+            </div>
+            <div class="p-2">
+                <div class="d-inline me-2">
+                    <a href="https://t.me/jamshidchoriyevDev" style="text-decoration: none;">
+                        <img class="text-start" style="width: 2rem;" src="{% static 'images/free-icon-dev.png' %}"
+                             alt="Jamshid">
+                    </a>
+                </div>
+                <div class="d-inline ms-2">
+                    <a href="https://t.me/mcJahongir">
+                        <img class="text-start" style="width: 2rem;" src="{% static 'images/free-icon-developer.png' %}"
+                             alt="Jahongir">
+                    </a>
+                </div>
+            </div>
+    </footer>
+</div>
+<div class="container">
+    <ul class="nav col-md-12 justify-content-end list-unstyled d-flex">
+        {% get_social_media as social_media %}
+
+        {% for social in social_media %}
+        <li class="ms-3">
+            <a class="text-body-secondary fs-3" href="{{ social.url }}">
+                <i class="fa-brands {% if social.title == 'instagram' %} fa-square-{{ social.title }} {% else %} fa-{{ social.title }} {% endif %}"
+                   style="color: {{ social.color }};"></i>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+</div>
+<div class="" style="height: 3rem;"></div>

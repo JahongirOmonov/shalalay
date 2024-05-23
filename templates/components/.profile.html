@@ -1,0 +1,22 @@
+{% load static %}
+{% load i18n %}
+<ul class="nav col-12 col-lg-auto justify-content-center
+my-md-0 text-small font-ink-free bg-dark rounded-5 hover-panel">
+    <li class="">
+
+        <a href="{% url 'users:profile' %}" class="nav-link" style="color: red;">
+            {% if not request.profile.photo %}
+                <i class="fa-solid fa-user fs-3"></i>
+            {% else %}
+                <img class="rounded rounded-circle" style="width: 2.5rem; height: 2.5rem;"
+                     src="{{ request.user.profile.photo.url }}" alt="{{ request.user.username }}">
+            {% endif %}
+            <span class="ms-2 fs-5 fw-bold span-color-always3">
+
+                {{ request.user.first_name|default:request.user.username }}
+            </span>
+        </a>
+    </li>
+</ul>
+
+

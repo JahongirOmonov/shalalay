@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% block title %}
+{% blocktrans %}Jurnalni o'chirish{% endblocktrans %}
+{% endblock title %}
+
+
+{% block content %}
+<div class="container col-6 shadow-lg rounded-4 mt-4  font-consolas">
+    <h1 class="font-consolas mt-2 mx-4 text-center">
+        {% blocktrans with title=post.title %}"{{ title }}"ni o'chirish{% endblocktrans %}
+    </h1>
+    <div class="col mt-4 mx-4">
+        <h3 class="mb-4 text-danger">
+            {% blocktrans %}Siz o'chirishni istaysizmi?{% endblocktrans %}"{{ journal.source_year }}-{{ journal.source_number }}"</h3>
+        <hr class="my-3">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="d-flex justify-content-between container">
+                <button type="submit"
+                        class="btn btn-outline-danger mb-4">
+                    {% blocktrans %}O'chirish{% endblocktrans %}
+                </button>
+                <a class="btn btn-outline-dark ms-4 mb-4"
+                        href="{% url 'journal:journal_list' %}">
+                    {% blocktrans %}Ortga{% endblocktrans %}
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+

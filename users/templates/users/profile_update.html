@@ -1,0 +1,44 @@
+{% extends 'users/_profile.html' %}
+{% load i18n %}
+{% block title %}
+{% blocktrans %}
+Profilni tahrirlash
+{% endblocktrans %}
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="container col-xxl-6 shadow-lg rounded-4 mt-5">
+    <h1 class="font-consolas mt-2 mx-4 text-center pt-2">
+        <p class="text-end fs-1 me-2">
+            <span class="me-5">{% blocktrans %}Profilni tahrirlash{% endblocktrans %}</span>
+            <a href="{% url 'users:profile' %}" class="text-danger">
+                <i class="fa-solid fa-rectangle-xmark">
+
+                </i>
+            </a>
+        </p>
+    </h1>
+    <div class="col-xxl mt-4 ">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in user_form %}
+                {{ field.errors }}
+                <p>{{ field.label_tag }}</p>
+                <p>{{ field }}</p>
+            {% endfor %}
+            {% for field in profile_form %}
+                {{ field.errors }}
+                <p>{{ field.label_tag }}</p>
+                <p>{{ field }}</p>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-outline-success mb-4">{% blocktrans %}Tahrirlash{% endblocktrans %}</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+
+
+

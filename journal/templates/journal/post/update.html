@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% block title %}
+{% blocktrans with title=post.title %}{{ title }}ni - tahrirlash{% endblocktrans %}
+{% endblock title %}
+
+
+{% block content %}
+<div class="container shadow-lg rounded-4 mt-4">
+    <h1 class="font-consolas mt-2 mx-4 text-center">
+        {% blocktrans with title=post.title %}"{{ title }}"ni tahrirlash{% endblocktrans %}
+    </h1>
+    <p class="text-end fs-1 me-2">
+        <a href="{{ post.get_absolute_url }}" class="text-danger">
+            <i class="fa-solid fa-rectangle-xmark">
+
+            </i>
+        </a>
+    </p>
+    <div class="col-xxl mt-4 mx-4">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+
+
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-outline-success  mb-4">
+                    {% blocktrans %}Tahrirlash{% endblocktrans %}
+                </button>
+                <a href="{{ post.get_absolute_url }}" class="btn btn-outline-dark  mb-4">
+                    {% blocktrans %}Ortga{% endblocktrans %}
+                </a>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock content %}
+
+

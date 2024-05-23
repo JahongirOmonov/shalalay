@@ -1,0 +1,65 @@
+{% load static %}
+{% load i18n %}
+<li class="nav-item hover-panel">
+    <a class="nav-link active" href="{% url 'journal:main_page' %}">
+        <i style="color: red" class="fa-solid fa-house fs-4"></i>
+        {% get_current_language as LANGUAGE_CODE %}
+        {% if LANGUAGE_CODE == "uz" %}
+        <span class="span-color-always">{% blocktrans %}Asosiy{% endblocktrans %}</span>
+        {% elif LANGUAGE_CODE == "en" %}
+        <span class="span-color-always">{% blocktrans %}Main{% endblocktrans %}</span>
+        {% elif LANGUAGE_CODE == "ru" %}
+        <span class="span-color-always">{% blocktrans %}Основной{% endblocktrans %}</span>
+        {% endif %}
+    </a>
+</li>
+<li class="nav-item hover-panel">
+    <a class="nav-link active" aria-current="page" href="{% url 'journal:post_list' %}">
+        <i class="fa-regular fa-newspaper fs-4" style="color: red"></i>
+        <span class="span-color-always">{% blocktrans %}Yangiliklar{% endblocktrans %}</span>
+    </a>
+</li>
+<li class="nav-item hover-panel">
+    <a class="nav-link active" aria-current="page" href="{% url 'journal:article_list' %}">
+        <i style="color: red" class="fa-solid fa-book-journal-whills fs-4"></i>
+        <span class="span-color-always">{% blocktrans %}Maqolalar{% endblocktrans %}</span>
+    </a>
+</li>
+<li class="nav-item hover-panel">
+    <a class="nav-link active" aria-current="page" href="{% url 'journal:contact' %}">
+        <i style="color: red" class=" fa-regular fa-address-book fs-4"></i>
+        <span class="span-color-always">{% blocktrans %}Bog'lanish{% endblocktrans %}</span>
+    </a>
+</li>
+<li class="nav-item hover-panel">
+    <a class="nav-link active" aria-current="page" href="{% url 'journal:journal_list' %}">
+        <i style="color: red" class=" fa-regular fa-folder-open fs-4"></i>
+        <span class="span-color-always">{% blocktrans %}Arxiv{% endblocktrans %}</span>
+    </a>
+</li>
+<li class="nav-item hover-panel">
+    <a class="nav-link active" aria-current="page" href="{% url 'journal:booking_article' %}">
+        <i style="color: red" class=" fa-regular fa-pen-to-square fs-4"></i>
+        {% get_current_language as LANGUAGE_CODE %}
+        {% if LANGUAGE_CODE == "uz" %}
+        <span class="span-color-always">{% blocktrans %}Maqola yuborish{% endblocktrans %}</span>
+        {% elif LANGUAGE_CODE == "en" %}
+        <span class="span-color-always">{% blocktrans %}Sending article{% endblocktrans %}</span>
+        {% elif LANGUAGE_CODE == "ru" %}
+        <span class="span-color-always">{% blocktrans %}Отправка статьи{% endblocktrans %}</span>
+        {% endif %}
+    </a>
+</li>
+<li class="nav-item hover-panel">
+    <a class="nav-link active" aria-current="page" href="{% url 'journal:about_journal' %}">
+        <i style="color: red" class=" fa-solid fa-circle-info fs-4"></i>
+        <span class="span-color-always">{% blocktrans %}Jurnal haqida{% endblocktrans %}</span>
+    </a>
+</li>
+
+<li class="nav-item hover-panel">
+    <a class="nav-link active" aria-current="page" href="{% url 'journal:editorial_list' %}">
+        <i class="fa-solid fa-people-group fs-5" style="color: red"></i>
+        <span class="span-color-always">{% blocktrans %}Tahririyat{% endblocktrans %}</span>
+    </a>
+</li>

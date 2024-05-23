@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title  %}
+{% blocktrans %}Asosiy sahifa{% endblocktrans %}
+{% endblock %}
+
+{% block content %}
+<div class="container mb-5">
+
+    <div class="row mt-5">
+        <div class="col-xxl">
+            <p class="text-center fs-2 fw-medium" style="font-family: Times New Roman; color:#3b3b1f">{% blocktrans %}Maqolalar{% endblocktrans %}</p>
+            {% for article in articles %}
+            <div class="card mb-3 shadow-lg">
+                <div class="card-body ">
+                    <h5 class="card-title text-center">{{ article.title }}</h5>
+                    <p class="card-text">{{ article.content|safe|truncatewords:15 }}</p>
+                    <div>
+                        <a href="{{ article.get_absolute_url }}" class="btn btn-outline-info">{% blocktrans %}batafsil...{% endblocktrans %}</a>
+                    </div>
+                </div>
+                <div class="card-footer text-body-secondary">
+                    {{ article.created_at|timesince }}
+                </div>
+            </div>
+            {% empty %}
+            <div class="card mb-3 shadow-lg">
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0 mt-3">
+                        <footer class="blockquote-footer" style="font-family: Times New Roman; color:#3b3b1f">{% blocktrans %}Bu yerda hali maqolalar mavjud emas.{% endblocktrans %}
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-xxl">
+            <p class="text-center fs-3 fw-medium" style="font-family: Times New Roman; color:#3b3b1f">{% blocktrans %}Yangiliklar{% endblocktrans %}</p>
+            {% for post in posts %}
+            <div class="card mb-3 shadow-lg">
+
+                {% if post.mediaImage %}
+                    {% if post.file_extension == "image" %}
+                        <img src="{{ post.mediaImage.url }}" class="card-img-top" alt="{{ post.title }}">
+                    {% elif post.file_extension == "video" %}
+                        <video class="w-100" controls>
+                            <source src="{{ post.mediaImage.url }}" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+
+                {% endif %}
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">
+                        {{ post.content|safe|truncatewords:30 }}
+                    </p>
+                    <div>
+                        <a href="{{ post.get_absolute_url }}" class="btn btn-outline-info mb-3">{% blocktrans %}batafsil...{% endblocktrans %}</a>
+                    </div>
+                    <p class="card-text"><small class="text-body-secondary">{{ post.created_at|timesince }}</small></p>
+                </div>
+            </div>
+            {% empty %}
+            <div class="card mb-3 shadow-lg">
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0 mt-3">
+                        <footer class="blockquote-footer" style="font-family: Times New Roman; color:#3b3b1f">{% blocktrans %}Bu yerda hali yangiliklar mavjud emas.{% endblocktrans %}
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

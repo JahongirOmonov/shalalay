@@ -1,0 +1,192 @@
+.font-ink-free {
+    font-family: ink-free;
+}
+
+
+.font-nsim-sun {
+    font-family: NSimSun;
+}
+
+.font-monotype-corsiva {
+    font-family: Monotype Corsiva;
+}
+
+.font-consolas {
+    font-family: Consolas;
+}
+
+.bg-image {
+    height: 25rem;
+    /*width: 20rem;*/
+    background-size: cover;
+    /*background-image: linear-gradient(lightgreen, lightgreen, lime, lime, white);*/
+    background-image: url("../images/bgimage1.png");
+}
+
+.hover-uzb:hover{
+    background-image: linear-gradient(blue, blue, blue, blue, blue, darkred, white, white, white, white, darkred, green, green, green, green);
+}
+
+.hover-lime-green:hover{
+
+    background-image: linear-gradient(limegreen, lime, green, lime, limegreen);
+}
+
+
+.hover-fire:hover{
+    background-image: linear-gradient(black, red, yellow);
+}
+
+.hover-link:hover {
+    background-color: greenyellow;
+}
+
+
+.span-hover:hover .span-color:hover {
+    color: lime;
+}
+
+.span-color-always{
+    color: darkred;
+    font-weight: bold;
+    font-size: large;
+
+}
+.span-color-always2{
+    color: darkred;
+    font-weight: bold;
+    font-size: large;
+
+}
+.span-color-always3{
+    color: red;
+    font-weight: bold;
+    font-size: large;
+}
+.span-color-always2:hover{
+    color: #212529;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 50%;
+
+}
+
+.nav-link:hover {
+    /*background-image: linear-gradient(limegreen, lime, limegreen);*/
+    transition: 0.3s ease-in;
+    background-color: lime;
+    box-shadow: 0 0 5px;
+}
+
+.nav-linkkkk:hover{
+    transition: 0.3s ease-in;
+    /*background-color: lime;*/
+    box-shadow: 0 0 5px;
+}
+
+.lime-color{
+    color: lime;
+}
+
+.lime-color-hover:hover{
+    color: lime;
+}
+
+
+.bg-lime
+{
+    color: red;
+    background-color: lime;
+}
+
+
+.fornow{
+    font-family: Times New Roman;
+    border: 2px solid red;
+    padding: 10px 10px 10px 10px ;
+    box-shadow:
+            0 0 10px #00FF7F,
+            0 0 10px #00FF7F,
+            0 0 10px #00FF7F,
+            0 0 10px #00FF7F;
+    transition: transform 0.3s ease-in;
+    color: red;
+    border-radius: 10px;
+}
+
+.fornow:hover {
+    background-image: linear-gradient(#f72585, #480ca8, #4cc9f0);
+    transform: scale(1.02);
+    color: lime;
+    box-shadow:
+            0 0 10px yellow,
+            0 0 10px yellow,
+            0 0 10px yellow,
+            0 0 10px yellow;
+}
+
+
+
+.tovuqq{
+    font-family: Times New Roman;
+    border: 2px solid red;
+    padding: 10px 10px 10px 10px ;
+    box-shadow:
+            0 0 10px #00FF7F,
+            0 0 10px #00FF7F,
+            0 0 10px #00FF7F,
+            0 0 10px #00FF7F;
+    transition: transform 0.3s ease-in;
+    color: white;
+    border-radius: 10px;
+}
+
+.tovuqq:hover {
+    background-image: linear-gradient(#f72585, #480ca8, #4cc9f0);
+    transform: scale(1.02);
+    color: lime;
+    box-shadow:
+            0 0 10px yellow,
+            0 0 10px yellow,
+            0 0 10px yellow,
+            0 0 10px yellow;
+}
+
+.fornow5 {
+    color: red;
+    border: 2px solid #00FF00;
+    padding: 4px 4px;
+    border-radius: 10px;
+    ;
+}
+
+.fornow5:hover{
+    color: black;
+    background-color: red;
+    transition: 0.3s ease-in;
+}
+
+.malak{
+    border: 2px solid #007f7f;
+    border-radius: 10px;
+
+}
+
+.borderim {
+    border: 2px solid red;
+    padding: 5px;
+    border-radius: 10px;
+    margin-right: 10px;
+    box-shadow:
+            0 0 10px #00FF7F,
+            0 0 10px #00FF7F,
+            0 0 10px #00FF7F,
+            0 0 10px #00FF7F;
+}
+
+.borderim:hover {
+    background-color: lime;
+    transition: 0.3s ease-in;
+}
+
+

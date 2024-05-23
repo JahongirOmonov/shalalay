@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% endblock title %}
+{% load i18n %}
+{% blocktrans %}Kirish{% endblocktrans %}
+
+{% block content %}
+<div class="container col-xxl-6 shadow-lg rounded-4 mt-4">
+    <h1 class="mt-2 mx-4 text-center" style="font-family: Times New Roman; color:#3b3b1f; font-weight: bold">
+        {% blocktrans %}Kirish{% endblocktrans %}
+    </h1>
+    <div class="col mt-4 mx-4">
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <p>{{ field.errors }}</p>
+                <p>{{ field }}</p>
+            {% endfor %}
+            <button type="submit" class="btn btn-outline-success mb-4" style="font-family: Times New Roman; ">Log-in</button>
+            <a href="{% url 'password_reset' %}" class="btn btn-outline-primary mb-4" style="font-family: Times New Roman; ">{% blocktrans %}Parolni tiklash{% endblocktrans %}</a>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+
+
+

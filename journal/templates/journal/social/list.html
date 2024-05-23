@@ -1,0 +1,32 @@
+{% extends 'users/_profile.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+{% blocktrans %}
+Ijtimouy tarmoqlar ro'yhati
+{% endblocktrans %}
+{% endblock title %}
+
+
+{% block content %}
+<div class="mt-4"></div>
+<div class="container">
+    <p class="text-uppercase ms-5 fw-bold fs-4 font-consolas">{% blocktrans %}ijtimoiy tarmoqlar{% endblocktrans %}</p>
+    {% for social in social_media %}
+    <div class="card col-xxl-6 mb-2 ">
+        <div class="card-body">
+            <a class="text-body-secondary" style="text-decoration: none;" href="{{ social.url }}">
+                <i class="fa-brands fs-1 {% if social.title == 'instagram' %} fa-square-{{ social.title }} {% else %} fa-{{ social.title }} {% endif %}"
+                   style="color:{{ social.color }};"></i>
+            </a><span class="font-consolas fs-3"> - {{ social.title }}</span>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-outline-warning" href="{{ social.get_update_url }}">{% blocktrans %}Tahrirlash{% endblocktrans %}</a>
+            <a class="btn btn-outline-danger" href="{{ social.get_delete_url }}">{% blocktrans %}O'chirish{% endblocktrans %}</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
+
+

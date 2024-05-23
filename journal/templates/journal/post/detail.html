@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+{% blocktrans with title=post.title %}{{ title }} haqida {% endblocktrans %}
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="card col-xm col-sm-8 mb-3 mt-5">
+        {% if post.mediaImage %}
+        <img src="{{ post.mediaImage.url }}" class="card-img-top" alt="{{ post.title }}">
+        {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">
+                {{ post.content|safe }}
+            </p>
+            <p class="card-text"><small class="text-body-secondary">{{ post.created_at|timesince }}</small></p>
+            <p class="fw-bold"><span
+                    class="font-consolas" style="color: #555555">
+                    {% blocktrans %}Ko'rishlar soni: {% endblocktrans %}{{ post.views }}
+                </span></p>
+            <p class="fw-bold"><span
+                    class="font-consolas" style="color: #555555">
+                    {% blocktrans %}Admin:{% endblocktrans %} {{ post.author.username }}
+                </span></p>
+            {% if request.user.is_superuser %}
+            <div class="col">
+                <a class="btn btn-outline-warning mt-2"
+                   href="{{ post.get_update_url }}">{% blocktrans %}Tahrirlash{% endblocktrans %}</a>
+            </div>
+            <div class="col">
+                <a class="btn btn-outline-danger mt-2"
+                   href="{{ post.get_delete_url }}">{% blocktrans %}O'chirish{% endblocktrans %}</a>
+            </div>
+            {% endif %}
+            <div class="col">
+                <a class="btn btn-outline-info mt-2"
+                   href="{% url 'journal:post_list' %}">{% blocktrans %}Barcha yangiliklar{% endblocktrans %}</a>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

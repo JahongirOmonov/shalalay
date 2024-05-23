@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title  %}
+{% blocktrans %}Bog'lanish{% endblocktrans %}
+{% endblock %}
+
+
+{% block content %}
+<div class="container my-4">
+    <div class="row mt-4 mx-2">
+        <div class="col-xll-7 mt-4 mb-4 shadow-lg rounded-5 border border-2 border-info">
+            <div class="card mt-4 mb-4 text-secondary border-0">
+                <h1 class="mx-4 my-4 fs-3 mb-4" style="font-family: Times New Roman; color:#3b3b1f">
+                    {% blocktrans %}Biz bilan bog'lanish{% endblocktrans %}
+                </h1>
+                {% get_current_language as LANGUAGE_CODE %}
+                {% if LANGUAGE_CODE == "uz" %}
+                <p class="mx-4 font-consolas fw-medium fs-xs-6" style="font-family: Times New Roman; color:#3b3b1f">{% blocktrans %}Manzil: Surxondaryo viloyati, Termiz shahri, “Barkamol avlod” ko'chasi 43-uy,
+Mo‘ljal: Termiz davlat unversiteti{% endblocktrans %}</p>
+                {% elif LANGUAGE_CODE == "en" %}
+                <p class="mx-4 font-consolas fw-medium fs-xs-6" style="font-family: Times New Roman; color:#3b3b1f">{% blocktrans %}Address: Surkhandarya region, Termiz city, "Barkamol Avlod" street 43, Destination: Termez State University{% endblocktrans %}</p>
+                {% elif LANGUAGE_CODE == "ru" %}
+                <p class="mx-4 font-consolas fw-medium fs-xs-6" style="font-family: Times New Roman; color:#3b3b1f">{% blocktrans %}Адрес: Сурхандарьинская область, город Термез, улица «Баркамол Авлод» 43,Направление: Термезский государственный университет{% endblocktrans %}</p>
+                {% endif %}
+                    <hr class="my-2 ms-4 w-75">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% if LANGUAGE_CODE == "uz" %}
+                <p class="mx-4 font-consolas fw-medium fs-xs-6" style="font-family: Times New Roman; color:#3b3b1f">{% blocktrans %}Telefon: +998915779050; +998976956755{% endblocktrans %}</p>
+                    <hr class="my-2 ms-4 w-75">
+                <p class="mx-4 font-consolas fw-medium fs-xs-6" style="font-family: Times New Roman; color:#3b3b1f">{% blocktrans %}Email: tursunovsafullo12@mail.ru{% endblocktrans %}</p>
+                    <hr class="my-2 ms-4 w-75">
+                {% elif LANGUAGE_CODE == "en" %}
+                <p class="mx-4 font-consolas fw-medium fs-xs-6" style="font-family: Times New Roman; color:#3b3b1f">{% blocktrans %}Phone: +998915779050; +998976956755{% endblocktrans %}</p>
+                    <hr class="my-2 ms-4 w-75">
+                <p class="mx-4 font-consolas fw-medium fs-xs-6" style="font-family: Times New Roman; color:#3b3b1f">{% blocktrans %}Email: tursunovsafullo12@mail.ru{% endblocktrans %}</p>
+                    <hr class="my-2 ms-4 w-75">
+                {% elif LANGUAGE_CODE == "ru" %}
+                <p class="mx-4 font-consolas fw-medium fs-xs-6" style="font-family: Times New Roman; color:#3b3b1f">{% blocktrans %}Телефон: +998915779050; +998976956755{% endblocktrans %}</p>
+                    <hr class="my-2 ms-4 w-75">
+                <p class="mx-4 font-consolas fw-medium fs-xs-6" style="font-family: Times New Roman; color:#3b3b1f">{% blocktrans %}Электронная почта: tursunovsafullo12@mail.ru{% endblocktrans %}</p>
+                    <hr class="my-2 ms-4 w-75">
+                {% endif %}
+                <p class="mx-4 font-consolas fw-medium fs-xs-6" style="font-family: Times New Roman; color:#3b3b1f">{% blocktrans %}Web-sayt: www.surxon-ilmtafakkur.uz{% endblocktrans %}</p>
+                    <hr class="my-2 ms-4 w-75">
+            </div>
+
+        </div>
+        <div class="col-xll-5 text-center mt-4 mb-4">
+            <div class="card shadow rounded-5 border-2 border-info h-100">
+
+                {% include 'journal/includes/.contact_form.html' %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

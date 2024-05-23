@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{% load i18n %}
+{% blocktrans %}Tahririyat{% endblocktrans %}
+{% endblock title %}
+
+{% block content %}
+<div class="container mb-4">
+    <p class="text-center fs-2 fw-medium mt-3" style="font-family: Times New Roman; color:#3b3b1f">{% blocktrans %}Tahririyat
+        a'zolari{% endblocktrans %}</p>
+    <div class="row mb-4">
+        {% for editorial in editorials %}
+        <div class="col-md-6 mb-3">
+            <div class="card" style="border: 2px solid black;">
+                <div class="row g-0">
+                    <div class="col-md-2" style="border: 2px solid black">
+                        {% if editorial.image %}
+                        <img src="{{ editorial.image.url }}" class="img-fluid rounded-start"
+                             alt="{{ editorial.id }} - tahrirchi" width="110">
+                        {% else %}
+                        <img src="{% static 'images/teacher.png' %}" class="img-fluid rounded-start" alt="Default Photo"
+                             width="110">
+                        {% endif %}
+
+                    </div>
+                    <div class="col-md-10" style="border: 2px solid black;">
+                        <div class="card-body" style="padding: 0; padding-left: 3px;">
+                            <p class="card-text">{{ editorial.content|safe }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% if request.user.is_superuser %}
+                <div class="row">
+                    <div class="col-9">
+                        <a class="btn btn-outline-warning mt-2"
+                           href="{{ editorial.get_update_url }}">{% blocktrans %}Tahrirlash{% endblocktrans %}</a>
+                    </div>
+                    <div class="col-1 " style="margin-left: 50px">
+                        <a class="btn btn-outline-danger mt-2"
+                           href="{{ editorial.get_delete_url }}">{% blocktrans %}O'chirish{% endblocktrans %}</a>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-md-6">
+            <div class="card mb-3 shadow-lg" style="border: 2px solid black;">
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0 mt-3">
+                        <footer class="blockquote-footer" style="font-family: Times New Roman; color:#3b3b1f">{% blocktrans %}Bu yerda hali Tahrir a'zolari mavjud emas.{% endblocktrans %}
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% include 'journal/includes/pagination.html' with page=editorials %}
+</div>
+{% endblock content %}

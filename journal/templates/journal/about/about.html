@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% comment %}
+{% block style %}
+<style>
+    .myborder {
+        border: 1px solid red;
+    }
+</style>
+{% endblock style %}
+{% endcomment %}
+
+{% block title %}
+
+{% blocktrans %}Jurnal haqida{% endblocktrans %}
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row mx-1">
+        <div class="col-sm-9">
+            <p class="text-left fs-1 fw-medium mt-3" style="font-family: Times New Roman; color:#3b3b1f">{% blocktrans %}Jurnal haqida{% endblocktrans %}</p>
+            <p class="text-center fs-3 text-secondary fw-medium mt-3">{{ datas.journal_name }}</p>
+            <img class="w-100 rounded-4" src="{{ datas.journal_image.url }}" alt="Image}">
+        </div>
+
+        <div class="col-sm-3 text-center mt-5 pt-4">
+            <div class="mt-4 pt-4">
+                <img class="mt-4 pt-4 rounded-4" src="{{ datas.author_image.url }}" width="300" alt="Image">
+                <div class="fw-bold fs-5">
+                    <p class="">
+                        {{ datas.author_description|safe }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3 shadow-lg rounded-4 mx-1">
+        <div class="col p-5">
+            <div class="fw-bolder fs-sm-4 p-1">
+                {{ datas.content|safe }}
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+{% endblock content %}

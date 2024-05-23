@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+{% blocktrans %}Yangiliklar{% endblocktrans %}
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="container">
+    <p class="text-center fs-2 fw-medium" style="font-family: Times New Roman; color:#3b3b1f">{% blocktrans %}Yangiliklar{% endblocktrans %}</p>
+    {% for post in posts %}
+    <div class="card col-xm col-sm-8 mb-3">
+        {% if post.mediaImage %}
+        <img src="{{ post.mediaImage.url }}" class="card-img-top" alt="{{ article.title }}">
+        {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">
+                {{ post.content|safe|truncatewords:30 }}
+            </p>
+            <p class="card-text"><small class="text-body-secondary">{{ post.created_at|timesince }}</small></p>
+            <p class="card-text"><small class="text-body-secondary">{% blocktrans %}Muallif:{% endblocktrans %} {{ post.author }}</small></p>
+            <div>
+                <a href="{{ post.get_absolute_url }}" class="btn btn-outline-info">{% blocktrans %}batafsil...{% endblocktrans %}</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="card col-8 mb-3 shadow-lg">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0 mt-3">
+                <footer class="blockquote-footer" style="font-family: Times New Roman; color:#3b3b1f">{% blocktrans %}Bu yerda hali yangiliklar mavjud emas.{% endblocktrans %}
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+    {% endfor %}
+    {% include 'journal/includes/pagination.html' with page=page_obj %}
+</div>
+
+{% endblock content %}

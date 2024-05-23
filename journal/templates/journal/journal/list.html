@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% load i18n %}
+{% block title %}
+{% blocktrans %}Arxiv{% endblocktrans %}
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    {% for journal in journals %}
+    <div class="row col-sm-10 mx-2 shadow-lg rounded-3 border-success mt-4">
+        <div class="col-sm-4">
+            <a href="{{ journal.image.url }}">
+                <img src="{% thumbnail journal.image 300x300 %}"
+                     class="img-fluid border border-light border-5 rounded-4 my-2 mx-sm-2" alt="Image">
+            </a>
+            <div class="">
+                <p class="card-text mx-4 mt-4 mb-2"><small class="text-body-secondary">
+                    {{ journal.created_at|timesince }} {% blocktrans %}avval{% endblocktrans %}
+                </small>
+                </p>
+            </div>
+        </div>
+        <div class="col-sm-6"></div>
+        <div class="col-sm-2 text-end">
+            <div class="card-body">
+                <div class="col">
+                    <p class="card-text">
+
+                    </p>
+                </div>
+                <div class="col">
+                    <h5 class="card-title mx-4 my-2 text-dark">
+                        <span class="fw-bold fs-4 text-danger">
+                            №{{ journal.pk }}</span> - {{ journal.source_year }}({{ journal.source_number }})</h5>
+                </div>
+                <div class="col">
+                    <a class="btn btn-outline-success mx-4 my-2" href="{{ journal.file.url }}" download>
+                        {% blocktrans %}Yuklab olish{% endblocktrans %}
+                    </a>
+                </div>
+                {% if request.user.is_superuser %}
+                <div class="col me-4">
+                    <a class="btn btn-warning my-2" href="{{ journal.get_update_url }}">
+                        {% blocktrans %}Tahrirlash{% endblocktrans %}
+                    </a>
+                    <a class="btn btn-danger my-2" href="{{ journal.get_delete_url }}">
+                        {% blocktrans %}O'chirish{% endblocktrans %}
+                    </a>
+                </div>
+                <div class="col">
+
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="card  mt-4 mb-4">
+        <div class="card-header">
+            {% blocktrans %}Arxiv{% endblocktrans %}
+        </div>
+        <div class="card-body mb-4">
+            <blockquote class="blockquote mb-0">
+                <p>{% blocktrans %}Bu yerda barcha jurnalning pdf, doc va docx fayllari joylashadi. {% endblocktrans %}</p>
+                <footer class="blockquote-footer"><cite title="Source Title">{% blocktrans %}PDF, Docx, Doc{% endblocktrans %}</cite>
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+
+{% endblock content %}
+

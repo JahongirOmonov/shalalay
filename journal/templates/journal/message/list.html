@@ -1,0 +1,68 @@
+{% extends 'users/_profile.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+{% blocktrans %}Xabarlar{% endblocktrans %}
+{% endblock title %}
+
+<div class="mt-4 pt-4 col"></div>
+{% block content %}
+<div class="container font-consolas pt-4 mt-4">
+    <div class="text-center text-uppercase fw-bold fs4 font-consolas mb-2">
+        {% blocktrans %}Xabarlar ro'yxati {% endblocktrans %}(<span class="fs-xxl-5 text-info">{{ messages_count }}</span>)
+        {% if messages_count > 0 %}
+            <form action="{% url 'journal:message_delete_all' %}" method="post" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-danger">{% blocktrans %}Barcha xabarlarni o'chirish{% endblocktrans %}</button>
+            </form>
+        {% endif %}
+    </div>
+
+    {% for message in messages %}
+    <div class="card col-xxl-8 shadow border-0 mb-3">
+        <div class="card-header fw-bold ">
+            <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                <li class="text-danger">
+                    <a class="nav-link">
+                        <i class="text-secondary fa-solid fa-user fs-4">: </i>
+                        <span class="fs-6 text-info">
+                            {{ message.sender.username }}
+                        </span>
+                    </a>
+                </li>
+                <li class="">
+                    <a class="nav-link">
+                        <i class="text-secondary fa-solid fa-phone  fs-4">: </i>
+                        <span class="fs-6 text-info">{{ message.sender.profile.telephone }}</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a class="nav-link">
+                        <i class="text-secondary fa-solid fa-envelope fs-4">: </i>
+                        <span class="fs-6 text-info">{{ message.sender.email }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body  bg-info">
+            <h5 class="card-title text-center alert alert-info">{{ message.sender.username|title }}{% blocktrans %}dan kelgan xabar{% endblocktrans %}</h5>
+            <hr class="my-2 text-secondary ">
+            <p class="card-text text-dark fw-bolder fs-6">{{ message.message }}</p>
+        </div>
+        <div class="card-footer text-body-secondary">
+            {{ message.created_at|timesince }}
+        </div>
+    </div>
+    {% endfor %}
+    {% include 'journal/includes/pagination.html' with page=messages %}
+</div>
+{% endblock content %}
+
+
+from journal.models import Contact
+from django.contrib.auth import get_user_model
+User = get_user_model()
+user1 = User.objects.get(pk=4)
+
+
+
